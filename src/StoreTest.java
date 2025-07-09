@@ -20,18 +20,18 @@ class StoreTest {
     void testRemoveOutDated() {
         store = new Store();
         LocalDateTime old = LocalDateTime.now().minusYears(5);
-        LocalDateTime today        = LocalDateTime.now();
+        LocalDateTime today        = LocalDateTime.now().plusYears(2);
         PaperBook oldBook = new PaperBook("BBBBO", "Title 1", 100, 10 , old);
         PaperBook newBook = new PaperBook("BBBBN", "Title 2", 150, 10 , today);
         store.addBook(oldBook);
         store.addBook(newBook);
         List<Books> outdated = store.returnOutDated(3);
         store.removeOutDated(outdated);
-        assertFalse(outdated.contains(oldBook), "the old one should be removed");
-        assertTrue(outdated.contains(newBook), "the new book is not outdated");
+        assertTrue(outdated.contains(oldBook), "the old one should be removed");
+        assertFalse(outdated.contains(newBook), "the new book is not outdated");
         store.removeOutDated(outdated);
-        assertTrue(store.inventory.containsKey("BBBBO"));
-        assertFalse(store.inventory.containsKey("BBBBN"));
+        assertFalse(store.inventory.containsKey("BBBBO"));
+        assertTrue(store.inventory.containsKey("BBBBN"));
     }
 
     @Test
