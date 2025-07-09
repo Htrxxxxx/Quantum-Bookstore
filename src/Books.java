@@ -5,7 +5,7 @@ public abstract class Books {
     protected String ISBN ;
     protected String title ;
     protected int price ;
-    protected LocalDateTime publicationDate ;
+    protected LocalDateTime expirationDate ;
 
     public abstract String getISBN() ;
     public abstract String getTitle() ;

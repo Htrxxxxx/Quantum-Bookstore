@@ -12,28 +12,28 @@ public class Store {
     public void addBook(Books book) {
         inventory.put(book.ISBN , book);
         if(book instanceof PaperBook) {
-            System.out.println("PaperBook with title " + book.getTitle());
+            System.out.println("PaperBook with title " + book.getISBN() + " added");
         }
         if(book instanceof EBook) {
-            System.out.println("EBook with title " + book.getTitle());
+            System.out.println("EBook with title " + book.getISBN() + " added");
         }
         if(book instanceof DemoBooks) {
-            System.out.println("DemoBooks with title " + book.getTitle());
+            System.out.println("DemoBooks with title " + book.getISBN() + " added");
         }
     }
     public List<Books> returnOutDated(int years) {
-       List<Books> books = new ArrayList<>() ;
-       for(Map.Entry<String , Books> entry : inventory.entrySet()) {
-           LocalDateTime today = LocalDateTime.now() ;
-           LocalDateTime lstDate = entry.getValue().getPublicationDate().plusYears(years) ;
-           if(entry.getValue().publicationDate.plusYears(years).isAfter(today)){
-               books.add(entry.getValue());
-           }
-       }
-       return books ;
+        List<Books> books = new ArrayList<>();
+        LocalDateTime cutoff = LocalDateTime.now().minusYears(years);
+        for (Books book : inventory.values()) {
+            if (book.expirationDate.isBefore(cutoff)) {
+                books.add(book);
+            }
+        }
+        return books;
     }
     public void removeOutDated(List<Books> books) {
         for(Books book : books) {
+            System.out.println("This Book " + book.getISBN() + " has been removed");
             inventory.remove(book.ISBN);
         }
     }

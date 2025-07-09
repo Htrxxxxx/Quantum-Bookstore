@@ -3,11 +3,11 @@ import java.time.LocalDateTime;
 public class EBook extends Books {
     protected String fileType ;
 
-    public EBook(String ISBN, String title, int price , LocalDateTime publicationDate) {
+    public EBook(String ISBN, String title, int price , LocalDateTime expirationDate) {
         this.ISBN = ISBN ;
         this.title = title ;
         this.price = price ;
-        this.publicationDate = LocalDateTime.now() ;
+        this.expirationDate = LocalDateTime.now() ;
     }
 
     public String getFileType() {
@@ -27,6 +27,6 @@ public class EBook extends Books {
     }
     @Override
     public LocalDateTime getPublicationDate() {
-        return publicationDate ;
+        return expirationDate ;
     }
 }

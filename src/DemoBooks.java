@@ -2,11 +2,11 @@ import java.time.LocalDateTime;
 
 public class DemoBooks extends Books {
 
-    public DemoBooks(String ISBN, String title, int price , LocalDateTime publicationDate) {
+    public DemoBooks(String ISBN, String title, int price , LocalDateTime expirationDate) {
         this.ISBN = ISBN ;
         this.title = title ;
         this.price = price ;
-        this.publicationDate = publicationDate ;
+        this.expirationDate = expirationDate ;
     }
     @Override
     public int getPrice() {
@@ -22,6 +22,6 @@ public class DemoBooks extends Books {
     }
     @Override
     public LocalDateTime getPublicationDate() {
-        return publicationDate ;
+        return expirationDate ;
     }
 }

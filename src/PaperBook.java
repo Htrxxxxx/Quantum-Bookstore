@@ -3,11 +3,11 @@ import java.time.LocalDateTime;
 public class PaperBook extends Books {
     protected int stocks ;
 
-    public PaperBook(String ISBN, String title, int price , int amount , LocalDateTime publicationDate) {
+    public PaperBook(String ISBN, String title, int price , int amount , LocalDateTime expirationDate) {
         this.ISBN = ISBN ;
         this.title = title ;
         this.price = price ;
-        this.publicationDate = publicationDate ;
+        this.expirationDate = expirationDate ;
         this.stocks = amount ;
     }
     public void reduceStock(int amount) {
@@ -31,7 +31,7 @@ public class PaperBook extends Books {
     }
     @Override
     public LocalDateTime getPublicationDate() {
-        return publicationDate ;
+        return expirationDate ;
     }
 
 }
